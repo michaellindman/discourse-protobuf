@@ -1,0 +1,66 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "google/protobuf/timestamp.proto";
+
+message CategoryTopics {
+    message Users{
+        int32 id = 1;
+        string username = 2;
+        string name = 3;
+        string avatar_template = 4;
+    }
+    repeated Users users = 1;
+    message TopicList {
+        bool can_create_topic = 1;
+        string draft_key = 2;
+        int32 draft_sequence = 3;
+        int32 per_page = 4;
+        repeated string top_tags = 5;
+        message Topics {
+            int32 id = 1;
+            string title = 2;
+            string fancy_title = 3;
+            string slug = 4;
+            int32 posts_count = 5;
+            int32 reply_count = 6;
+            int32 highest_post_number = 7;
+            string image_url = 8;
+            google.protobuf.Timestamp created_at = 9;
+            google.protobuf.Timestamp last_posted_at = 10;
+            bool bumped = 11;
+            google.protobuf.Timestamp bumped_at = 12;
+            string archetype = 13;
+            bool unseen = 14;
+            int32 last_read_post_number = 15;
+            int32 unread = 16;
+            int32 new_posts = 17;
+            bool pinned = 18;
+            bool visible = 19;
+            bool closed = 20;
+            bool archived = 21;
+            int32 notification_level = 22;
+            bool bookmarked = 23;
+            bool liked = 24;
+            repeated string tags = 25;
+            int32 views = 26;
+            int32 like_count = 27;
+            bool has_summary = 28;
+            string last_poste_username = 29;
+            int32 category_id = 30;
+            bool pinned_globally = 31;
+            bool has_accepted_answer = 32;
+            message Posters {
+                string extras = 1;
+                string description = 2;
+                int32 user_id = 3;
+            }
+            repeated Posters posters = 33;
+        }
+        repeated Topics topics = 6;
+        repeated int32 bookmarked_post_numbers = 7;
+    }
+    TopicList topic_list = 2;
+}

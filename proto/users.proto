@@ -1,0 +1,257 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "google/protobuf/timestamp.proto";
+
+message Users {
+    message UserBadges {
+        int32 id = 1;
+        google.protobuf.Timestamp granted_at = 2;
+        google.protobuf.Timestamp created_at = 3;
+        int32 count = 4;
+        int32 badge_id = 5;
+        int32 user_id = 6;
+        int32 grated_by_id = 7;
+        int32 post_id = 8;
+        int32 post_number = 9;
+        int32 topic_id = 10;
+    }
+    repeated UserBadges user_badges = 1;
+    message Badges {
+        int32 id = 1;
+        string name = 2;
+        string description = 3;
+        int32 grant_count = 4;
+        bool allow_title = 5;
+        bool multiple_grant = 6;
+        string icon = 7;
+        string image = 8;
+        bool listable = 9;
+        bool enabled = 10;
+        int32 badge_grouping_id = 11;
+        bool system = 12;
+        string slug = 13;
+        bool manually_grantable = 14;
+        int32 badge_type_id = 15;
+    }
+    repeated Badges badges = 2;
+    message BadgeTypes {
+        int32 id = 1;
+        string name = 2;
+        int32 sort_order = 3;
+    }
+    repeated BadgeTypes badge_types = 3;
+    message Users {
+        int32 id = 1;
+        string username = 2;
+        string name = 3;
+        string avatar_template = 4;
+        bool moderator = 5;
+        bool admin = 6;
+    }
+    repeated Users users = 4;
+    message Topics {
+        int32 id = 1;
+        string title = 2;
+        string fancy_title = 3;
+        string slug = 4;
+        int32 posts_count = 6;
+    }
+    repeated Topics topics = 5;
+    message User {
+        int32 id = 1;
+        string username = 2;
+        string name = 3;
+        string avatar_template = 4;
+        string email = 6;
+        google.protobuf.Timestamp last_posted_at = 7;
+        google.protobuf.Timestamp last_seen_at = 8;
+        google.protobuf.Timestamp created_at = 9;
+        bool ignored = 10;
+        bool muted = 11;
+        bool can_ignore_user = 12;
+        bool can_mute_user = 13;
+        bool can_send_private_messages = 14;
+        bool can_send_private_messages_to_user = 15;
+        int32 trust_level = 16;
+        bool moderator = 17;
+        bool admin = 18;
+        string title = 19;
+        int32 badge_count = 20;
+        int32 time_read = 21;
+        int32 recent_time_read = 22;
+        message FeaturedTopic {
+            int32 id = 1;
+            string title = 2;
+            google.protobuf.Timestamp last_posted_at = 3;
+            google.protobuf.Timestamp created_at = 4;
+            google.protobuf.Timestamp updated_at = 5;
+            int32 views = 6;
+            int32 posts_count = 7;
+            int32 user_id = 8;
+            int32 last_post_user_id = 9;
+            int32 reply_count = 10;
+            int32 highest_post_number = 11;
+            int32 like_count = 12;
+            int32 incoming_link_count = 13;
+            int32 category_id = 14;
+            bool visible = 15;
+            int32 moderator_posts_count = 16;
+            bool closed = 17;
+            bool archived = 18;
+            google.protobuf.Timestamp bumped_at = 19;
+            bool has_summary = 20;
+            string archetype = 21;
+            int32 notify_moderators_count = 22;
+            int32 spam_count = 23;
+            double score = 24;
+            double percent_rank = 26;
+            string slug = 27;
+            int32 participant_count = 28;
+            int32 word_count = 29;
+            string excerpt = 30;
+            bool pinned_globally = 31;
+            string fancy_title = 32;
+            int32 highest_staff_post_number = 33;
+            double reviewable_score = 34;
+            int32 image_upload_id = 35;
+        }
+        FeaturedTopic featured_topic = 23;
+        string website = 24;
+        string website_name = 25;
+        bool staged = 26;
+        bool can_edit = 27;
+        bool can_edit_username = 28;
+        bool can_edit_email = 29;
+        bool can_edit_name = 30;
+        int32 uploaded_avatar_id = 31;
+        bool has_title_badges = 32;
+        int32 pending_count = 33;
+        int32 profile_view_count = 34;
+        bool secondary_factor_enabled = 35;
+        bool secondary_factor_backup_enabled = 36;
+        int32 secondary_factor_remaining_backup_codes = 37;
+        message AssociatedAccounts {
+            string name = 1;
+            string description =2;
+        }
+        repeated AssociatedAccounts associated_accounts = 38;
+        bool can_upload_profile_header = 39;
+        bool can_upload_user_card_background = 40;
+        int32 post_count = 41;
+        bool can_be_deleted = 42;
+        bool can_delete_all_posts = 43;
+        string locale = 44;
+        repeated int32 muted_category_ids = 45;
+        repeated int32 regular_category_ids = 46;
+        repeated string watched_tags = 47;
+        repeated string watching_first_post_tags = 48;
+        repeated string tracked_tags = 49;
+        repeated string muted_tags = 50;
+        repeated int32 tracked_category_ids = 51;
+        repeated int32 watched_category_ids = 52;
+        repeated int32 watched_first_post_category_ids = 53;
+        int32 system_avatar_upload_id = 54;
+        string system_avatar_template = 55;
+        int32 custom_avatar_upload_id = 56;
+        string custom_avatar_template = 57;
+        repeated string muted_usernames = 58;
+        repeated string ignored_usernames = 59;
+        repeated string allowed_pm_usernames = 60;
+        int32 mailing_list_posts_per_day = 61;
+        bool can_change_bio = 62;
+        bool can_change_website = 63;
+        message UserAuthTokens {
+            int32 id = 1;
+            string client_ip = 2;
+            string location = 3;
+            string browser = 4;
+            string device = 5;
+            string os = 6;
+            string icon = 7;
+            google.protobuf.Timestamp created_at = 8;
+            google.protobuf.Timestamp seen_at = 9;
+            bool is_active = 10;
+        }
+        repeated UserAuthTokens user_auth_tokens = 64;
+        repeated int32 featured_user_badge_ids = 65;
+        message Groups {
+            int32 id = 1;
+            bool automatic = 2;
+            string name = 3;
+            string display_name = 4;
+            int32 user_count = 5;
+            int32 mentionable_level = 6;
+            int32 messageable_level = 7;
+            int32 visibility_level = 8;
+            bool primary_group = 9;
+            bool has_messages = 10;
+            string bio_raw = 11;
+            bool public_admission = 12;
+            bool public_exit = 13;
+            bool allow_membership_requests = 14;
+            string full_name = 15;
+            int32 default_notification_level = 16;
+            string membership_request_template = 17;
+            int32 members_visibility_level = 18;
+            bool can_see_members = 19;
+            bool can_admin_group = 20;
+            bool publish_read_state = 21;
+            string imap_mailbox_name = 22;
+            repeated int32 watching_category_ids = 23;
+            repeated int32 tracking_category_ids = 24;
+            repeated int32 watching_first_post_category_ids = 25;
+            repeated int32 regular_category_ids = 26;
+            repeated int32 muted_category_ids = 27;
+            repeated string watching_tags = 28;
+            repeated string watching_first_post_tags = 29;
+            repeated string trackings_tags = 30;
+            repeated string regular_tags = 31;
+            repeated string muted_tags = 32;
+        }
+        repeated Groups groups = 66;
+        message GroupUsers {
+            int32 group_id = 1;
+            int32 user_id = 2;
+            int32 notification_level = 3;
+            bool owner = 4;
+        }
+        repeated GroupUsers group_users = 67;
+        message UserOption {
+            int32 user_id = 1;
+            bool mailing_list_mode = 2;
+            int32 mailing_list_mode_frequency = 3;
+            bool email_digests = 4;
+            int32 email_level = 5;
+            int32 email_messages_level = 6;
+            bool external_links_is_new_tab = 7;
+            int32 dark_scheme_id = 8;
+            bool dynamic_favicon = 9;
+            bool enable_quoting = 10;
+            bool enable_defer = 11;
+            int32 digest_after_minutes = 12;
+            bool automatically_unpin_topics = 13;
+            int32 auto_track_topics_afters_msecs = 14;
+            int32 notification_level_when_replying = 15;
+            int32 new_topic_duration_minutes = 16;
+            int32 email_previous_replies = 17;
+            bool email_in_reply_to = 18;
+            int32 like_notification_frequency = 19;
+            bool include_tl0_in_digests = 20;
+            repeated int32 theme_ids = 21;
+            int32 theme_key_seq = 22;
+            bool allow_private_messages = 23;
+            bool enable_allowed_pm_users = 24;
+            bool hide_profile_and_presense = 25;
+            string text_size = 26;
+            int32 text_size_seq = 27;
+            string title_count_mode = 28;
+            string timezone = 29;
+            bool skip_new_user_tips = 30;
+        }
+        UserOption user_option = 68;
+    }
+    User user = 6;
+}

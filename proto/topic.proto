@@ -1,0 +1,36 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "google/protobuf/timestamp.proto";
+
+message Topic {
+    message PostStream {
+        message Posts {
+            string cooked = 1;
+            int32 post_number = 2;
+            bool admin = 3;
+            bool staff = 4;
+        }
+        repeated Posts posts = 1;
+    }
+    PostStream post_stream = 1;
+    int32 id = 2;
+    repeated string tags = 3;
+    string title = 4;
+    int32 posts_count = 5;
+    google.protobuf.Timestamp created_at = 6;
+    string slug = 7;
+    int32 like_count = 8;
+    int32 views = 9;
+    message Details {
+        message CreatedBy {
+            string username = 1;
+            string name = 2;
+            string avatar_template = 3;
+        }
+        CreatedBy created_by = 1;
+    }
+    Details details = 10;
+}

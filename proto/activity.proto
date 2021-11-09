@@ -1,0 +1,68 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "google/protobuf/timestamp.proto";
+
+message Activity {
+    message Post {
+        int32 id = 1;
+        string name = 2;
+        string username = 3;
+        string avatar_template = 4;
+        google.protobuf.Timestamp created_at = 5;
+        string cooked = 6;
+        int32 post_number = 7;
+        int32 post_type = 8;
+        google.protobuf.Timestamp updated_at = 9;
+        int32 reply_count = 10;
+        int32 reply_to_post_number = 11;
+        int32 qoute_count = 12;
+        int32 incoming_link_count = 13;
+        int32 reads = 14;
+        int32 readers_count = 15;
+        int32 score = 16;
+        bool yours = 17;
+        int32 topic_id = 18;
+        string topic_slug = 19;
+        string display_username = 20;
+        string primary_group_name = 21;
+        string primary_group_flair_url = 22;
+        string primary_group_flair_bg_color = 23;
+        string primary_group_flair_color = 24;
+        int32 version = 25;
+        bool can_edit = 26;
+        bool can_delete = 27;
+        bool can_recover = 28;
+        bool can_wiki = 29;
+        string user_title = 30;
+        bool title_is_group = 31;
+        bool bookmarked = 32;
+        message ActionsSummary {
+            int32 id = 1;
+            int32 count = 2;
+            bool can_act = 3;
+        }
+        repeated ActionsSummary actions_summary = 33;
+        bool moderator = 34;
+        bool admin = 35;
+        bool staff = 36;
+        int32 user_id = 37;
+        bool hidden = 38;
+        int32 trust_level = 39;
+        google.protobuf.Timestamp deleted_at = 40;
+        bool user_deleted = 41;
+        string edit_reason = 42;
+        bool can_view_edit_history = 43;
+        bool wiki = 44;
+        string excerpt = 45;
+        int32 reviewable_id = 46;
+        int32 reviewable_score_count = 47;
+        int32 reviewable_score_pending_count = 48;
+        bool can_accept_answer  = 49;
+        bool can_unaccept_answer = 50;
+        bool accepted_answer = 51;
+    }
+    repeated Post post = 1;
+}

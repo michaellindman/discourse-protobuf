@@ -1,0 +1,64 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "google/protobuf/timestamp.proto";
+
+message Latest {
+    message Users {
+        int32 id = 1;
+        string username = 2;
+        string name = 3;
+        string avatar_template = 4;
+    }
+    repeated Users users = 1;
+    message TopicList {
+        bool can_create_topics = 1;
+        string more_topics_url = 2;
+        int32 per_page = 3;
+        repeated string top_tags = 4;
+        message Topics {
+            int32 id = 1;
+            string title = 2;
+            string slug = 3;
+            int32 posts_count = 4;
+            int32 reply_count = 5;
+            int32 highest_post_number = 6;
+            google.protobuf.Timestamp created_at = 7;
+            google.protobuf.Timestamp last_posted_at = 8;
+            bool bumped = 9;
+            google.protobuf.Timestamp bumped_at = 10;
+            string archetype = 11;
+            bool unseen = 12;
+            int32 last_read_post_number = 13;
+            int32 unread = 14;
+            int32 new_posts = 15;
+            bool pinned = 16;
+            bool visible = 17;
+            bool closed = 18;
+            bool archived = 19;
+            int32 notification_level = 20;
+            bool bookmarked = 21;
+            bool liked = 22;
+            repeated string tags = 23;
+            int32 views = 24;
+            int32 like_count = 25;
+            bool has_summary = 26;
+            string last_poster_username = 27;
+            int32 category_id = 28;
+            bool pinned_globally = 29;
+            repeated int32 bookmarked_post_numbers = 30;
+            bool has_accepted_answer = 31;
+        }
+        repeated Topics topics = 5;
+        message Posters {
+            string extras = 1;
+            string description = 2;
+            int32 user_id = 3;
+            int32 primary_group_id = 4;
+        }
+        repeated Posters posters = 6;
+    }
+    TopicList topic_list = 2;
+}

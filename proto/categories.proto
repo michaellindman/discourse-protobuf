@@ -1,0 +1,49 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+
+message Categories {
+    message CategoryList {
+        bool can_create_category = 1;
+        bool can_create_topic = 2;
+        message Categories {
+            int32 id = 1;
+            string name = 2;
+            string color = 3;
+            string text_color = 4;
+            string slug = 5;
+            int32 topic_count = 6;
+            int32 post_count = 7;
+            int32 position = 8;
+            string description = 9;
+            string description_text = 10;
+            string description_excerpt = 11;
+            string topic_url = 12;
+            bool read_restricted = 13;
+            int32 permission = 14;
+            int32 notification_level = 15;
+            bool can_edit = 16;
+            string topic_template = 17;
+            bool has_children = 18;
+            string sort_order = 19;
+            bool show_subcategory_list = 20;
+            int32 num_featured_topics = 21;
+            string default_view = 22;
+            string subcategory_list_style = 23;
+            string default_top_period = 24;
+            string default_list_filter = 25;
+            int32 minimum_required_tags = 26;
+            bool navigate_to_first_post_after_read = 27;
+            int32 topics_day = 28;
+            int32 topics_week = 29;
+            int32 topics_month = 30;
+            int32 topics_year = 31;
+            int32 topics_all_time = 32;
+            repeated int32 subcategory_ids = 33;
+        }
+        repeated Categories categories = 3;
+    }
+    CategoryList category_list = 1;
+}

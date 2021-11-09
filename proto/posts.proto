@@ -1,0 +1,63 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "google/protobuf/timestamp.proto";
+
+message PostsRequest {
+    string title = 1;
+    int32 topic_id = 2;
+    string raw = 3;
+    int32 category = 4;
+    string target_recipients = 5;
+    string archetype = 6;
+    google.protobuf.Timestamp created_at = 7;
+}
+
+message PostsResponse {
+    int32 id = 1;
+    string name = 2;
+    string avatar_template = 3;
+    google.protobuf.Timestamp created_at = 4;
+    string cooked = 5;
+    int32 post_number = 6;
+    int32 post_type = 7;
+    string updated_at = 8;
+    int32 reply_count = 9;
+    int32 reply_to_post_number = 10;
+    int32 quote_count = 11;
+    google.protobuf.Timestamp avg_time = 12;
+    int32 incoming_link_count = 13;
+    int32 reads = 14;
+    double score = 15;
+    bool yours = 16;
+    int32 topic_id = 17;
+    string topic_slug = 18;
+    string display_username = 19;
+    int32 version = 20;
+    bool can_edit = 21;
+    bool can_delete = 22;
+    bool can_recover = 23;
+    bool can_wiki = 24;
+    string user_title = 25;
+    message ActionsSummary {
+        int32 id = 1;
+        bool hidden = 2;
+        bool can_act = 3;
+    }
+    repeated ActionsSummary actions_summary = 26;
+    bool moderator = 27;
+    bool admin = 28;
+    bool staff = 29;
+    int32 user_id = 30;
+    int32 draft_sequence = 31;
+    bool hidden = 32;
+    int32 hidden_reason_id = 33;
+    int32 trust_level = 34;
+    google.protobuf.Timestamp deleted_at = 35;
+    bool user_deleted = 36;
+    string edit_reason = 37;
+    bool can_view_edit_history = 38;
+    bool wiki = 39;
+}

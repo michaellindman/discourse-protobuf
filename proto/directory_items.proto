@@ -1,0 +1,36 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "google/protobuf/timestamp.proto";
+
+message DirectoryItems {
+    message DirectoryItems {
+        int32 id = 1;
+        int32 time_read = 2;
+        int32 likes_received = 3;
+        int32 likes_given = 4;
+        int32 topics_entered = 5;
+        int32 topic_count = 6;
+        int32 post_count = 7;
+        int32 posts_read = 8;
+        int32 days_visited = 9;
+        message User {
+            int32 id = 1;
+            string username = 2;
+            string name = 3;
+            string avatar_template = 4;
+            string title = 5;
+        } 
+        User user = 10;
+    }
+    repeated DirectoryItems directory_items = 1;
+    message Meta {
+        google.protobuf.Timestamp last_updated_at = 1;
+        int32 total_rows_directory_items = 2;
+        string load_more_directory_items = 3;
+
+    }
+    Meta meta = 2;
+}

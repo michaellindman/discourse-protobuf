@@ -1,0 +1,62 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "google/protobuf/timestamp.proto";
+
+message About {
+    message About {
+        message Stats {
+            int32 topic_count = 1;
+            int32 post_count  = 2;
+            int32 user_count  = 3;
+            int32 topics_7_days = 4;
+            int32 topics_30_days = 5;
+            int32 posts_7_days = 6;
+            int32 posts_30_days = 7;
+            int32 users_7_days = 8;
+            int32 users_30_days = 9;
+            int32 active_users_7_days = 10;
+            int32 active_users_30_days = 11;
+            int32 like_count = 12;
+            int32 likes_7_days = 13;
+            int32 likes_30_days = 14;
+        }
+        Stats stats = 1;
+        string description = 2;
+        string title = 3;
+        string locale = 4;
+        string version = 5;
+        bool https = 6;
+        bool can_see_about_stats = 7;
+        message Moderators {
+            int32 id = 1;
+            string username = 2;
+            string name = 3;
+            string avatar_template = 4;
+            string title = 5;
+            google.protobuf.Timestamp last_seen_at = 6;
+        }
+        repeated Moderators moderators = 8;
+        message Admins {
+            int32 id = 1;
+            string username = 2;
+            string name = 3;
+            string avatar_template = 4;
+            string title = 5;
+            google.protobuf.Timestamp last_seen_at = 6;
+        }
+        repeated Admins admins = 9;
+        message CategoryModerators {
+            int32 id = 1;
+            string username = 2;
+            string name = 3;
+            string avatar_template = 4;
+            string title = 5;
+            google.protobuf.Timestamp last_seen_at = 6;
+        }
+        repeated CategoryModerators category_moderators = 10;
+    }
+    About about = 1;
+}

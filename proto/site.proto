@@ -1,0 +1,147 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+
+message Site {
+    string default_archetype = 1;
+    message NotificationTypes {
+        int32 mentioned = 1;
+        int32 replied = 2;
+        int32 qouted = 3;
+        int32 edited = 4;
+        int32 liked = 5;
+        int32 private_message = 6;
+        int32 invited_to_private_message = 7;
+        int32 invitee_accepted = 8;
+        int32 posted = 9;
+        int32 moved_post = 10;
+        int32 linked = 11;
+        int32 granted_badge = 12;
+        int32 invited_to_topic = 13;
+        int32 custom = 14;
+        int32 group_mentioned = 15;
+        int32 group_message_summary = 16;
+        int32 watching_first_post = 17;
+        int32 topic_reminder = 18;
+        int32 liked_consolidated = 19;
+        int32 post_approved = 20;
+        int32 code_review_commit_approved = 21;
+        int32 membership_request_accepted = 22;
+        int32 membership_request_consolidated = 23;
+        int32 bookmark_reminder = 24;
+        int32 reaction = 25;
+        int32 votes_released = 26;
+        int32 event_reminder = 27;
+        int32 event_invitation = 28;
+    }
+    NotificationTypes notification_types = 2;
+    message PostTypes {
+        int32 regular = 1;
+        int32 moderator_action = 2;
+        int32 small_action = 3;
+        int32 whisper = 4;
+    }
+    PostTypes post_types = 3;
+    message Groups {
+        int32 id = 1;
+        string name = 2;
+    }
+    repeated Groups groups = 4;
+    repeated string filter = 5;
+    repeated string periods = 6;
+    repeated string top_menu_items = 7;
+    repeated string anonymous_top_menu_items = 8;
+    int32 uncategorized_category_id = 9;
+    int32 user_field_max_length = 10;
+    message PostActionTypes {
+        int32 id = 1;
+        string name_key = 2;
+        string name = 3;
+        string description = 4;
+        string short_description = 5;
+        string long_form = 6;
+        bool is_flag = 7;
+        bool is_custom_flag = 8;
+    }
+    repeated PostActionTypes post_action_types = 11;
+    message TopicFlagTypes {
+        int32 id = 1;
+        string name_key = 2;
+        string name = 3;
+        string description = 4;
+        string short_description = 5;
+        string long_form = 6;
+        bool is_flag = 7;
+        bool is_custom_flag = 8;
+    }
+    repeated TopicFlagTypes topic_flag_types = 12;
+    bool can_create_tag = 13;
+    bool can_tag_topics = 14;
+    bool can_tag_pms = 15;
+    string tags_filter_regexp = 16;
+    repeated string top_tags = 17;
+    repeated int32 topic_featured_link_allowed_category_ids = 18;
+    message UserThemes {
+        int32 theme_id = 1;
+        string name = 2;
+        bool default = 3;
+    }
+    repeated UserThemes user_themes = 19;
+    message Categories {
+        int32 id = 1;
+        string name = 2;
+        string color = 3;
+        string text_color = 4;
+        string slug = 5;
+        int32 topic_count = 6;
+        int32 post_count = 7;
+        int32 position = 8;
+        string description = 9;
+        string description_text = 10;
+        string description_excerpt = 11;
+        string topic_url = 12;
+        bool read_restricted = 13;
+        int32 permission = 14;
+        int32 notification_level = 15;
+        bool can_edit = 16;
+        string topic_template = 17;
+        bool has_children = 18;
+        string sort_order = 19;
+        bool show_subcategory_list = 20;
+        int32 num_featured_topics = 21;
+        string default_view = 22;
+        string subcategory_list_style = 23;
+        string default_top_period = 24;
+        string default_list_filter = 25;
+        int32 minimum_required_tags = 26;
+        bool navigate_to_first_post_after_read = 27;
+        bool allowed_global_tags = 28;
+        int32 min_tags_from_required_group = 29;
+        int32 parent_category_id = 30;
+    }
+    repeated Categories categories = 20;
+    message TrustLevels {
+        int32 newuser = 1;
+        int32 basic = 2;
+        int32 member = 3;
+        int32 regular = 4;
+        int32 leader = 5;
+    }
+    TrustLevels trust_levels= 21;
+    message Archetypes {
+        string id = 1;
+        string name = 2;
+    }
+    repeated Archetypes archetypes = 22;
+    message AuthProviders {
+        string name = 1;
+        int32 frame_width = 2;
+        int32 frame_height = 3;
+        bool can_connect = 4;
+        bool can_revoke = 5;
+        string icon = 6;
+    }
+    repeated AuthProviders auth_providers = 23;
+}

@@ -1,0 +1,10 @@
+syntax="proto3";
+
+package discourse.protobuf;
+
+option go_package = "github.com/michaellindman/discourse-protobuf/discoursepb";
+import "topic.proto";
+
+message TopicList {
+    repeated Topic topic = 1;
+}
